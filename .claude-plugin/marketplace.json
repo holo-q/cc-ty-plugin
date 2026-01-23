@@ -13,7 +13,10 @@
       "author": {
         "name": "Astral Software Inc."
       },
-      "source": "./",
+      "source": {
+        "source": "github",
+        "repo": "KRRT7/ty-claude-plugin"
+      },
       "category": "development",
       "strict": false,
       "homepage": "https://github.com/astral-sh/ty",
