@@ -20,6 +20,7 @@
       "category": "development",
       "strict": false,
       "homepage": "https://github.com/astral-sh/ty",
+      "tags": ["community-managed"],
       "lspServers": {
         "ty": {
           "command": "ty",
