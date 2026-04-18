@@ -14,8 +14,8 @@
         "name": "Astral Software Inc."
       },
       "source": {
-        "source": "github",
-        "repo": "KRRT7/ty-claude-plugin"
+        "source": "directory",
+        "path": "."
       },
       "category": "development",
       "strict": false,
