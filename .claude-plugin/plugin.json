@@ -24,7 +24,9 @@
       "args": ["cc-lsp-now"],
       "env": {
         "LSP_COMMAND": "ty",
-        "LSP_ARGS": "server"
+        "LSP_ARGS": "server",
+        "LSP_FALLBACK_COMMAND": "basedpyright-langserver",
+        "LSP_FALLBACK_ARGS": "--stdio"
       }
     }
   }
