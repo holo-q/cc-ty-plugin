@@ -9,7 +9,7 @@
     {
       "name": "ty-lsp",
       "description": "Python language server using ty - an extremely fast type checker (10-100x faster than mypy/Pyright) by Astral",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "author": {
         "name": "Astral Software Inc."
       },
