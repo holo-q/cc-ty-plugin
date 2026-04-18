@@ -1,6 +1,6 @@
 {
   "name": "ty-lsp",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
@@ -8,6 +8,16 @@
   "repository": "https://github.com/astral-sh/ty",
   "license": "MIT",
   "keywords": ["python", "lsp", "language-server", "type-checking", "ty", "astral"],
+  "lspServers": {
+    "ty": {
+      "command": "ty",
+      "args": ["server"],
+      "extensionToLanguage": {
+        ".py": "python",
+        ".pyi": "python"
+      }
+    }
+  },
   "mcpServers": {
     "ty-lsp-extended": {
       "command": "uvx",
