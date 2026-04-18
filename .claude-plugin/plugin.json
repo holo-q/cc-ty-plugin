@@ -20,8 +20,8 @@
   },
   "mcpServers": {
     "ty-lsp-extended": {
-      "command": "cc-lsp-now",
-      "args": [],
+      "command": "uvx",
+      "args": ["cc-lsp-now"],
       "env": {
         "LSP_COMMAND": "ty",
         "LSP_ARGS": "server",
