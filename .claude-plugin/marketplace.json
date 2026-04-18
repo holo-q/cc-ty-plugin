@@ -13,10 +13,7 @@
       "author": {
         "name": "Astral Software Inc."
       },
-      "source": {
-        "source": "directory",
-        "path": "."
-      },
+      "source": ".",
       "category": "development",
       "strict": false,
       "homepage": "https://github.com/astral-sh/ty",
