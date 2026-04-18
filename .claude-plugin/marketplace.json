@@ -3,17 +3,20 @@
   "name": "ty-claude-plugin",
   "description": "Python type checker LSP plugin using ty by Astral",
   "owner": {
-    "name": "KRRT7"
+    "name": "holo-q"
   },
   "plugins": [
     {
       "name": "ty-lsp",
       "description": "Python language server using ty - an extremely fast type checker (10-100x faster than mypy/Pyright) by Astral",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Astral Software Inc."
       },
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "holo-q/cc-ty-plugin"
+      },
       "category": "development",
       "strict": false,
       "homepage": "https://github.com/astral-sh/ty",
