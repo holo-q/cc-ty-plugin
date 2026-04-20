@@ -38,11 +38,71 @@ Plus: push diagnostics via the native `lspServers` integration, surfaced automat
 
 ## Prerequisites
 
+Three binaries must be reachable on `PATH`: `ty`, `basedpyright-langserver`, and `cc-lsp-now`. Install them via whichever channel fits your system.
+
+### Cross-platform (recommended)
+
 ```bash
-uv tool install ty                    # primary LSP
-pip install basedpyright              # fallback for call hierarchy
-uv tool install --editable cc-lsp-now # MCP bridge (or: pip install cc-lsp-now)
+uv tool install ty
+uv tool install basedpyright          # installs basedpyright-langserver
+uv tool install cc-lsp-now            # MCP bridge
 ```
+
+`uv tool install` puts each binary on `PATH` independently — no venv activation, no shell rc edits.
+
+### Arch / CachyOS (AUR)
+
+```bash
+yay -S ty-bin                         # or: paru -S ty-bin
+yay -S basedpyright
+yay -S cc-lsp-now-git                 # not yet published — use uv tool install for now
+```
+
+Arch users who want to swap basedpyright for pylance locally:
+
+```bash
+yay -S pylance-language-server        # AUR — local-machine use only
+```
+
+Then set `LSP_REPLACE="basedpyright-langserver=pylance-language-server"` in your user settings, not in the plugin config.
+
+### Debian / Ubuntu
+
+```bash
+pipx install ty
+pipx install basedpyright
+pipx install cc-lsp-now
+```
+
+(`pipx` is the apt-friendly equivalent of `uv tool install`.)
+
+### Fedora
+
+```bash
+uv tool install ty
+uv tool install basedpyright
+uv tool install cc-lsp-now
+```
+
+(No ty/basedpyright packages in dnf as of writing — `uv tool install` is the path.)
+
+### macOS (Homebrew)
+
+```bash
+brew install uv
+uv tool install ty
+uv tool install basedpyright
+uv tool install cc-lsp-now
+```
+
+### From source (contributors)
+
+```bash
+git clone https://github.com/holo-q/cc-lsp-now
+uv tool install --editable cc-lsp-now
+```
+
+Edits to the local checkout are picked up on next MCP server spawn.
 
 ## More Information
 
