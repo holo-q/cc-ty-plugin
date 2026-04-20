@@ -7,9 +7,9 @@
   },
   "plugins": [
     {
-      "name": "ty-lsp",
+      "name": "cc-ty-lsp",
       "description": "Python language server using ty - an extremely fast type checker (10-100x faster than mypy/Pyright) by Astral",
-      "version": "2.4.0",
+      "version": "2.5.0",
       "author": {
         "name": "Astral Software Inc."
       },

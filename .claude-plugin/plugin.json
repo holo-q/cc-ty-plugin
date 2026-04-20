@@ -1,6 +1,6 @@
 {
-  "name": "ty-lsp",
-  "version": "2.4.0",
+  "name": "cc-ty-lsp",
+  "version": "2.5.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
