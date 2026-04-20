@@ -1,6 +1,6 @@
 {
   "name": "ty-lsp",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
@@ -37,7 +37,7 @@
     "_note": "The MCP bridge. ty-lsp-extended exposes the full LSP protocol as individual MCP tools (lsp_hover, lsp_rename, lsp_move_file, etc.). cc-lsp-now probes server capabilities at startup and registers only the tools at least one server supports.",
     "ty-lsp-extended": {
       "command": "uvx",
-      "args": ["cc-lsp-now"],
+      "args": ["--from", "git+https://github.com/holo-q/cc-lsp-now", "cc-lsp-now"],
       "env": {
         "_env_note": "LSP_SERVERS is a ';'-separated priority list. LSP_PREFER pre-seeds the per-method handler cache so Claude's first call to an op ty-doesn't-implement goes straight to basedpyright — no wasted ty round-trip.",
         "LSP_SERVERS": "ty server;basedpyright-langserver --stdio",
@@ -54,7 +54,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cc-lsp-now-redirect-hook"
+            "command": "uvx --from git+https://github.com/holo-q/cc-lsp-now cc-lsp-now-redirect-hook"
           }
         ]
       }
