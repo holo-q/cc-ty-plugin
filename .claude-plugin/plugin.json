@@ -1,6 +1,6 @@
 {
   "name": "ty-lsp",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
@@ -8,21 +8,7 @@
   "repository": "https://github.com/astral-sh/ty",
   "license": "MIT",
   "keywords": ["python", "lsp", "language-server", "type-checking", "ty", "astral"],
-
-  "_notes": {
-    "architecture": "Dual-layer LSP: lspServers gives Claude Code native push-diagnostics via ty, mcpServers gives Claude the full LSP protocol via cc-lsp-now (a standalone MCP adapter). The PreToolUse hook denies the built-in LSP() tool because it's incomplete and sometimes misleading.",
-    "phase_out_plan": "The MCP layer exists because Claude Code's built-in LSP tool only exposes ~9 of 20+ LSP methods and is buggy on a few of those. As Anthropic closes the gap (see claude-code#40282), this plugin will shrink back toward pure lspServers. Track the issue before assuming any workaround here is permanent.",
-    "ephemeral_in_this_file": [
-      "LSP_PREFER entries for callHierarchy and willRenameFiles — ty doesn't implement these as of 2026-04. When ty ships them, delete the PREFER entries so calls land on ty (faster, in-process incremental).",
-      "basedpyright fallback — once ty covers everything we use, remove the fallback from LSP_SERVERS too.",
-      "The LSP redirect hook — remove when Claude Code's built-in LSP() tool reaches parity and reliability with the MCP tools."
-    ],
-    "version_coupling": "The LSP_SERVERS/LSP_PREFER env syntax requires cc-lsp-now >= 2.1.0. Older versions used LSP_COMMAND/LSP_FALLBACK_COMMAND (still accepted by the bridge for legacy configs).",
-    "why_uvx_cc_lsp_now": "The MCP server is the cc-lsp-now package published separately (https://github.com/holo-q/cc-lsp-now). uvx downloads and runs it on demand. Users who installed it as a uv tool get the same binary on PATH — either invocation works."
-  },
-
   "lspServers": {
-    "_note": "The built-in LSP integration. Handles push diagnostics (the <new-diagnostics> reminders after edits). This path is what makes the feedback loop automatic — it's not just a tool, it's a native Claude Code capability.",
     "ty": {
       "command": "ty",
       "args": ["server"],
@@ -32,22 +18,17 @@
       }
     }
   },
-
   "mcpServers": {
-    "_note": "The MCP bridge. ty-lsp-extended exposes the full LSP protocol as individual MCP tools (lsp_hover, lsp_rename, lsp_move_file, etc.). cc-lsp-now probes server capabilities at startup and registers only the tools at least one server supports.",
     "ty-lsp-extended": {
       "command": "uvx",
       "args": ["--from", "git+https://github.com/holo-q/cc-lsp-now", "cc-lsp-now"],
       "env": {
-        "_env_note": "LSP_SERVERS is a ';'-separated priority list. LSP_PREFER pre-seeds the per-method handler cache so Claude's first call to an op ty-doesn't-implement goes straight to basedpyright — no wasted ty round-trip.",
         "LSP_SERVERS": "ty server;basedpyright-langserver --stdio",
         "LSP_PREFER": "workspace/willRenameFiles=basedpyright-langserver,textDocument/prepareCallHierarchy=basedpyright-langserver,callHierarchy/incomingCalls=basedpyright-langserver,callHierarchy/outgoingCalls=basedpyright-langserver"
       }
     }
   },
-
   "hooks": {
-    "_note": "PreToolUse matcher 'LSP' is an exact string match (built-in tool name). Does not collide with MCP tool names like mcp__plugin_ty-lsp_ty-lsp-extended__lsp_hover. The hook denies every LSP() call and returns a redirect message pointing Claude at the lsp_* MCP tools.",
     "PreToolUse": [
       {
         "matcher": "LSP",
