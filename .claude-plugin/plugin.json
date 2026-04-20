@@ -1,6 +1,6 @@
 {
   "name": "ty-lsp",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
@@ -19,7 +19,7 @@
     }
   },
   "mcpServers": {
-    "ty-lsp-extended": {
+    "ty": {
       "command": "uvx",
       "args": ["--from", "git+https://github.com/holo-q/cc-lsp-now", "cc-lsp-now"],
       "env": {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "ty-claude-plugin",
+  "name": "cc-ty-plugin",
   "description": "Python type checker LSP plugin using ty by Astral",
   "owner": {
     "name": "holo-q"
@@ -9,7 +9,7 @@
     {
       "name": "ty-lsp",
       "description": "Python language server using ty - an extremely fast type checker (10-100x faster than mypy/Pyright) by Astral",
-      "version": "2.3.1",
+      "version": "2.4.0",
       "author": {
         "name": "Astral Software Inc."
       },
