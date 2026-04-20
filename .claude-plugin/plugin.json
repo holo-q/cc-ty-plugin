@@ -1,6 +1,6 @@
 {
   "name": "ty-lsp",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
@@ -29,5 +29,18 @@
         "LSP_FALLBACK_ARGS": "--stdio"
       }
     }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "LSP",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cc-lsp-now-redirect-hook"
+          }
+        ]
+      }
+    ]
   }
 }
