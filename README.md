@@ -54,7 +54,7 @@ uv tool install cc-lsp-now            # MCP bridge
 
 ```bash
 yay -S ty-bin                         # or: paru -S ty-bin
-yay -S basedpyright
+yay -S basedpyright-bin
 yay -S cc-lsp-now-git                 # not yet published — use uv tool install for now
 ```
 
