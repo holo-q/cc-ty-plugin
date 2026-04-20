@@ -1,6 +1,6 @@
 {
   "name": "cc-ty-lsp",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
@@ -25,7 +25,8 @@
       "env": {
         "LSP_SERVERS": "ty server;basedpyright-langserver --stdio",
         "LSP_PREFER": "workspace/willRenameFiles=basedpyright-langserver,textDocument/prepareCallHierarchy=basedpyright-langserver,callHierarchy/incomingCalls=basedpyright-langserver,callHierarchy/outgoingCalls=basedpyright-langserver",
-        "LSP_PROJECT_MARKERS": "pyproject.toml,setup.py,setup.cfg,.git"
+        "LSP_PROJECT_MARKERS": "pyproject.toml,setup.py,setup.cfg,.git",
+        "LSP_WARMUP_PATTERNS": "*.py,*.pyi"
       }
     }
   },
