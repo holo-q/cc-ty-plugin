@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "ty": {
+      "command": "uvx",
+      "args": ["--refresh", "--from", "git+https://github.com/holo-q/cc-lsp-now", "cc-lsp-now-ty"],
+      "env": {
+        "LSP_SERVERS": "ty server;basedpyright-langserver --stdio",
+        "LSP_PREFER": "workspace/willRenameFiles=basedpyright-langserver,textDocument/prepareCallHierarchy=basedpyright-langserver,callHierarchy/incomingCalls=basedpyright-langserver,callHierarchy/outgoingCalls=basedpyright-langserver",
+        "LSP_PROJECT_MARKERS": "pyproject.toml,setup.py,setup.cfg,.git",
+        "LSP_WARMUP_PATTERNS": "*.py,*.pyi",
+        "LSP_WARMUP_EXCLUDE": "references,tmp,dist,build",
+        "LSP_LANGUAGE": "python"
+      }
+    }
+  }
+}

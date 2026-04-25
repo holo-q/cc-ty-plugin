@@ -1,0 +1,20 @@
+{
+  "name": "cc-ty-plugin",
+  "interface": {
+    "displayName": "cc-ty-plugin"
+  },
+  "plugins": [
+    {
+      "name": "cc-ty-lsp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cc-ty-lsp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    }
+  ]
+}

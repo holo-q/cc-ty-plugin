@@ -1,0 +1,40 @@
+{
+  "name": "cc-ty-lsp",
+  "version": "3.7.0",
+  "description": "Python language server using ty - an extremely fast type checker by Astral",
+  "author": {
+    "name": "Astral Software Inc.",
+    "url": "https://github.com/astral-sh"
+  },
+  "homepage": "https://github.com/astral-sh/ty",
+  "repository": "https://github.com/holo-q/cc-ty-plugin",
+  "license": "MIT",
+  "keywords": ["python", "lsp", "language-server", "type-checking", "ty", "astral"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "lspServers": {
+    "ty": {
+      "command": "ty",
+      "args": ["server"],
+      "extensionToLanguage": {
+        ".py": "python",
+        ".pyi": "python"
+      }
+    }
+  },
+  "interface": {
+    "displayName": "ty LSP",
+    "shortDescription": "Python semantic code intelligence through ty",
+    "longDescription": "Adds ty-backed Python LSP tools to Codex through cc-lsp-now, with basedpyright as a fallback for operations ty does not implement yet.",
+    "developerName": "holo-q",
+    "category": "Development",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/holo-q/cc-ty-plugin",
+    "defaultPrompt": [
+      "Use ty LSP to inspect this Python symbol.",
+      "Use ty LSP diagnostics on this file.",
+      "Use ty LSP to rename this Python symbol."
+    ],
+    "brandColor": "#D7FF64"
+  }
+}

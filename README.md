@@ -1,6 +1,6 @@
 # ty-lsp
 
-Python language server plugin for Claude Code using [ty](https://github.com/astral-sh/ty) — an extremely fast type checker by Astral.
+Python language server plugin for Claude Code and Codex using [ty](https://github.com/astral-sh/ty) — an extremely fast type checker by Astral.
 
 ## How it works
 
@@ -13,6 +13,20 @@ The plugin runs a two-layer LSP setup:
 3. **PreToolUse hook** — denies Claude Code's built-in `LSP()` tool with a redirect banner pointing the model at the MCP tools. The built-in tool only exposes ~9 of 20+ LSP methods, and some (`workspaceSymbol`) are buggy enough to be actively misleading.
 
 The bridge will be progressively phased out as Claude Code's built-in LSP implementation matures. Track progress at [claude-code#40282](https://github.com/anthropics/claude-code/issues/40282).
+
+## Codex support
+
+This repo also ships a Codex-native plugin under `plugins/cc-ty-lsp/` and a repo-local marketplace at `.agents/plugins/marketplace.json`.
+
+For local testing from this repo:
+
+```bash
+codex plugin marketplace add .
+```
+
+Then restart Codex, open `/plugins`, select the `cc-ty-plugin` marketplace, and install `cc-ty-lsp`.
+
+The Codex plugin keeps the same LSP server declaration and MCP bridge as the Claude Code plugin. The Claude Code redirect hook remains Claude-specific.
 
 ## Tools provided
 
