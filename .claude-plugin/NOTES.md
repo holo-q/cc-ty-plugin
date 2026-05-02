@@ -4,7 +4,7 @@ Notes that would be inline comments if JSON allowed them.
 
 ## Architecture
 
-**Dual-layer LSP.** `lspServers` gives Claude Code native push-diagnostics via ty (the `<new-diagnostics>` reminders). `mcpServers` gives Claude the full LSP protocol via cc-lsp-now, a standalone MCP adapter. The PreToolUse hook denies the built-in `LSP()` tool because it's incomplete and sometimes actively misleading (e.g. `workspaceSymbol` returns 0 results even when the server supports it).
+**Dual-layer LSP.** `lspServers` gives Claude Code native push-diagnostics via ty (the `<new-diagnostics>` reminders). `mcpServers` gives Claude the full LSP protocol via hsp, a standalone MCP adapter. The PreToolUse hook denies the built-in `LSP()` tool because it's incomplete and sometimes actively misleading (e.g. `workspaceSymbol` returns 0 results even when the server supports it).
 
 ## Phase-out plan
 
@@ -18,11 +18,11 @@ This plugin exists because Claude Code's built-in LSP only exposes ~9 of 20+ LSP
 
 ## Version coupling
 
-The `LSP_SERVERS`/`LSP_PREFER`/`LSP_REPLACE` env syntax requires cc-lsp-now >= 2.1.0. Older versions used `LSP_COMMAND`/`LSP_FALLBACK_COMMAND` (still accepted by the bridge as a legacy code path).
+The `LSP_SERVERS`/`LSP_PREFER`/`LSP_REPLACE` env syntax requires hsp >= 2.1.0. Older versions used `LSP_COMMAND`/`LSP_FALLBACK_COMMAND` (still accepted by the bridge as a legacy code path).
 
 ## uvx from git
 
-The MCP server and redirect hook are invoked via `uvx --from git+https://github.com/holo-q/cc-lsp-now ...`. This means users don't install cc-lsp-now manually — uvx fetches and caches it on first spawn. When cc-lsp-now lands on PyPI, the `--from git+...` prefix can be dropped.
+The MCP server and redirect hook are invoked via `uvx --from git+https://github.com/holo-q/hsp ...`. This means users don't install hsp manually — uvx fetches and caches it on first spawn. When hsp lands on PyPI, the `--from git+...` prefix can be dropped.
 
 ## Matcher safety
 

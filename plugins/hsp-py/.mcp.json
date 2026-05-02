@@ -2,7 +2,7 @@
   "mcpServers": {
     "ty": {
       "command": "uvx",
-      "args": ["--refresh", "--from", "git+https://github.com/holo-q/cc-lsp-now", "cc-lsp-now-ty"],
+      "args": ["--refresh", "--from", "git+https://github.com/holo-q/hsp", "hsp-ty"],
       "env": {
         "LSP_SERVERS": "ty server;basedpyright-langserver --stdio",
         "LSP_PREFER": "workspace/willRenameFiles=basedpyright-langserver,textDocument/prepareCallHierarchy=basedpyright-langserver,callHierarchy/incomingCalls=basedpyright-langserver,callHierarchy/outgoingCalls=basedpyright-langserver",

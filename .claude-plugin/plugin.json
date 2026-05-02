@@ -1,11 +1,11 @@
 {
-  "name": "cc-ty-lsp",
+  "name": "hsp-py",
   "version": "3.7.0",
   "description": "Python language server using ty - an extremely fast type checker by Astral",
   "author": {
     "name": "Astral Software Inc."
   },
-  "repository": "https://github.com/astral-sh/ty",
+  "repository": "https://github.com/holo-q/hsp-py",
   "license": "MIT",
   "keywords": ["python", "lsp", "language-server", "type-checking", "ty", "astral"],
   "lspServers": {
@@ -21,7 +21,7 @@
   "mcpServers": {
     "ty": {
       "command": "uvx",
-      "args": ["--refresh", "--from", "git+https://github.com/holo-q/cc-lsp-now", "cc-lsp-now-ty"],
+      "args": ["--refresh", "--from", "git+https://github.com/holo-q/hsp", "hsp-ty"],
       "env": {
         "LSP_SERVERS": "ty server;basedpyright-langserver --stdio",
         "LSP_PREFER": "workspace/willRenameFiles=basedpyright-langserver,textDocument/prepareCallHierarchy=basedpyright-langserver,callHierarchy/incomingCalls=basedpyright-langserver,callHierarchy/outgoingCalls=basedpyright-langserver",
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uvx --refresh --from git+https://github.com/holo-q/cc-lsp-now cc-lsp-now-redirect-hook-ty"
+            "command": "uvx --refresh --from git+https://github.com/holo-q/hsp hsp-redirect-hook-ty"
           }
         ]
       }

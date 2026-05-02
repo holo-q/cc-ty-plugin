@@ -1,14 +1,14 @@
 {
-  "name": "cc-ty-plugin",
+  "name": "hsp-py",
   "interface": {
-    "displayName": "cc-ty-plugin"
+    "displayName": "hsp-py"
   },
   "plugins": [
     {
-      "name": "cc-ty-lsp",
+      "name": "hsp-py",
       "source": {
         "source": "local",
-        "path": "./plugins/cc-ty-lsp"
+        "path": "./plugins/hsp-py"
       },
       "policy": {
         "installation": "AVAILABLE",

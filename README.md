@@ -1,4 +1,4 @@
-# ty-lsp
+# hsp-py
 
 Python language server plugin for Claude Code and Codex using [ty](https://github.com/astral-sh/ty) — an extremely fast type checker by Astral.
 
@@ -8,7 +8,7 @@ The plugin runs a two-layer LSP setup:
 
 1. **`lspServers` (built-in Claude Code LSP integration)** — registers ty so Claude Code's native machinery handles push diagnostics automatically (the `<new-diagnostics>` reminders after edits). This path is kept because the built-in LSP hooks into Claude's feedback loop in ways an MCP tool cannot.
 
-2. **`mcpServers` (cc-lsp-now bridge)** — spawns ty as a subprocess and exposes the full LSP protocol as 15 MCP tools with symbol-name addressing, multi-target batching, provenance headers, and per-method fallback. [basedpyright](https://github.com/DetachHead/basedpyright) is configured as the fallback for operations ty doesn't yet implement (call hierarchy, `willRenameFiles`, etc.).
+2. **`mcpServers` (hsp bridge)** — spawns ty as a subprocess and exposes the full LSP protocol as 15 MCP tools with symbol-name addressing, multi-target batching, provenance headers, and per-method fallback. [basedpyright](https://github.com/DetachHead/basedpyright) is configured as the fallback for operations ty doesn't yet implement (call hierarchy, `willRenameFiles`, etc.).
 
 3. **PreToolUse hook** — denies Claude Code's built-in `LSP()` tool with a redirect banner pointing the model at the MCP tools. The built-in tool only exposes ~9 of 20+ LSP methods, and some (`workspaceSymbol`) are buggy enough to be actively misleading.
 
@@ -16,7 +16,7 @@ The bridge will be progressively phased out as Claude Code's built-in LSP implem
 
 ## Codex support
 
-This repo also ships a Codex-native plugin under `plugins/cc-ty-lsp/` and a repo-local marketplace at `.agents/plugins/marketplace.json`.
+This repo also ships a Codex-native plugin under `plugins/hsp-py/` and a repo-local marketplace at `.agents/plugins/marketplace.json`.
 
 For local testing from this repo:
 
@@ -24,7 +24,7 @@ For local testing from this repo:
 codex plugin marketplace add .
 ```
 
-Then restart Codex, open `/plugins`, select the `cc-ty-plugin` marketplace, and install `cc-ty-lsp`.
+Then restart Codex, open `/plugins`, select the `hsp-py` marketplace, and install `hsp-py`.
 
 The Codex plugin keeps the same LSP server declaration and MCP bridge as the Claude Code plugin. The Claude Code redirect hook remains Claude-specific.
 
@@ -52,7 +52,7 @@ Plus: push diagnostics via the native `lspServers` integration, surfaced automat
 
 ## Prerequisites
 
-Two binaries need to be on `PATH`: `ty` and `basedpyright-langserver`. The MCP bridge (`cc-lsp-now`) is fetched and cached automatically by `uvx` on first plugin spawn — no manual install.
+Two binaries need to be on `PATH`: `ty` and `basedpyright-langserver`. The MCP bridge (`hsp`) is fetched and cached automatically by `uvx` on first plugin spawn — no manual install.
 
 You do need `uv` (for `uvx`). If you don't have it: `curl -LsSf https://astral.sh/uv/install.sh | sh`.
 
@@ -109,5 +109,5 @@ uv tool install basedpyright
 ## More Information
 
 - [ty Documentation](https://docs.astral.sh/ty/)
-- [cc-lsp-now](https://github.com/holo-q/cc-lsp-now) — the LSP-to-MCP bridge
+- [hsp](https://github.com/holo-q/hsp) — the LSP-to-MCP bridge
 - [claude-code#40282](https://github.com/anthropics/claude-code/issues/40282) — tracking built-in LSP improvements

@@ -1,13 +1,13 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "cc-ty-plugin",
+  "name": "hsp-py",
   "description": "Python type checker LSP plugin using ty by Astral",
   "owner": {
     "name": "holo-q"
   },
   "plugins": [
     {
-      "name": "cc-ty-lsp",
+      "name": "hsp-py",
       "description": "Python language server using ty - an extremely fast type checker (10-100x faster than mypy/Pyright) by Astral",
       "version": "3.0.0",
       "author": {
@@ -15,7 +15,7 @@
       },
       "source": {
         "source": "github",
-        "repo": "holo-q/cc-ty-plugin"
+        "repo": "holo-q/hsp-py"
       },
       "category": "development",
       "strict": false,
